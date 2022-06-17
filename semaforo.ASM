@@ -1,90 +1,90 @@
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*              MODIFICA«’ES PARA USO COM 12F675                   *
+;*              MODIFICA√á√ïES PARA USO COM 12F675                   *
 ;*                FEITAS PELO PROF. MARDSON                        *
-;*                      MAR«O DE 2021                              *
+;*                      MAR√áO DE 2021                              *
 ;*                 BASEADO NO EXEMPLO DO LIVRO                     *
-;*           Desbravando o PIC. David JosÈ de Souza                *
+;*           Desbravando o PIC. David Jos√© de Souza                *
 ;*-----------------------------------------------------------------*
 ;*   MODELO PARA O PIC 12F675                                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                     ARQUIVOS DE DEFINI«’ES                      *
+;*                     ARQUIVOS DE DEFINI√á√ïES                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-#INCLUDE <p12f675.inc>	;ARQUIVO PADR√O MICROCHIP PARA 12F675
+#INCLUDE <p12f675.inc>	;ARQUIVO PADR√ÉO MICROCHIP PARA 12F675
 
 	__CONFIG _BODEN_OFF & _CP_OFF & _PWRTE_ON & _WDT_OFF & _MCLRE_ON & _INTRC_OSC_NOCLKOUT
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    PAGINA«√O DE MEM”RIA                         *
+;*                    PAGINA√á√ÉO DE MEM√ìRIA                         *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;DEFINI«√O DE COMANDOS DE USU¡RIO PARA ALTERA«√O DA P¡GINA DE MEM”RIA
-#DEFINE	BANK0	BCF STATUS,RP0	;SETA BANK 0 DE MEM”RIA
-#DEFINE	BANK1	BSF STATUS,RP0	;SETA BANK 1 DE MAM”RIA
+;DEFINI√á√ÉO DE COMANDOS DE USU√ÅRIO PARA ALTERA√á√ÉO DA P√ÅGINA DE MEM√ìRIA
+#DEFINE	BANK0	BCF STATUS,RP0	;SETA BANK 0 DE MEM√ìRIA
+#DEFINE	BANK1	BSF STATUS,RP0	;SETA BANK 1 DE MAM√ìRIA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                         VARI¡VEIS                               *
+;*                         VARI√ÅVEIS                               *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DOS NOMES E ENDERE«OS DE TODAS AS VARI¡VEIS UTILIZADAS 
+; DEFINI√á√ÉO DOS NOMES E ENDERE√áOS DE TODAS AS VARI√ÅVEIS UTILIZADAS 
 ; PELO SISTEMA
 
-	CBLOCK	0x20	;ENDERE«O INICIAL DA MEM”RIA DE USU¡RIO
-		W_TEMP		;REGISTRADORES TEMPOR¡RIOS PARA USO
-		STATUS_TEMP	;JUNTO ¿S INTERRUP«’ES
-		INCR		;VARI¡VEL PARA INCREMENTO DOS LOOPS DE DELAY
-	ENDC			;FIM DO BLOCO DE DEFINI«√O DE VARI¡VEIS
+	CBLOCK	0x20	;ENDERE√áO INICIAL DA MEM√ìRIA DE USU√ÅRIO
+		W_TEMP		;REGISTRADORES TEMPOR√ÅRIOS PARA USO
+		STATUS_TEMP	;JUNTO √ÄS INTERRUP√á√ïES
+		INCR		;VARI√ÅVEL PARA INCREMENTO DOS LOOPS DE DELAY
+	ENDC			;FIM DO BLOCO DE DEFINI√á√ÉO DE VARI√ÅVEIS
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                        FLAGS INTERNOS                           *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODOS OS FLAGS UTILIZADOS PELO SISTEMA
+; DEFINI√á√ÉO DE TODOS OS FLAGS UTILIZADOS PELO SISTEMA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                         CONSTANTES                              *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODAS AS CONSTANTES UTILIZADAS PELO SISTEMA
+; DEFINI√á√ÉO DE TODAS AS CONSTANTES UTILIZADAS PELO SISTEMA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                           ENTRADAS                              *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODOS OS PINOS QUE SER√O UTILIZADOS COMO ENTRADA
-; RECOMENDAMOS TAMB…M COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+; DEFINI√á√ÉO DE TODOS OS PINOS QUE SER√ÉO UTILIZADOS COMO ENTRADA
+; RECOMENDAMOS TAMB√âM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                           SAÕDAS                                *
+;*                           SA√çDAS                                *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODOS OS PINOS QUE SER√O UTILIZADOS COMO SAÕDA
-; RECOMENDAMOS TAMB…M COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+; DEFINI√á√ÉO DE TODOS OS PINOS QUE SER√ÉO UTILIZADOS COMO SA√çDA
+; RECOMENDAMOS TAMB√âM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                       VETOR DE RESET                            *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-	ORG	0x00			;ENDERE«O INICIAL DE PROCESSAMENTO
+	ORG	0x00			;ENDERE√áO INICIAL DE PROCESSAMENTO
 	GOTO	INICIO
 	
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    INÕCIO DA INTERRUP«√O                        *
+;*                    IN√çCIO DA INTERRUP√á√ÉO                        *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; ENDERE«O DE DESVIO DAS INTERRUP«’ES. A PRIMEIRA TAREFA … SALVAR OS
-; VALORES DE "W" E "STATUS" PARA RECUPERA«√O FUTURA
+; ENDERE√áO DE DESVIO DAS INTERRUP√á√ïES. A PRIMEIRA TAREFA √â SALVAR OS
+; VALORES DE "W" E "STATUS" PARA RECUPERA√á√ÉO FUTURA
 
-	ORG	0x04		;ENDERE«O INICIAL DA INTERRUP«√O
+	ORG	0x04		;ENDERE√áO INICIAL DA INTERRUP√á√ÉO
 	MOVWF	W_TEMP		;COPIA W PARA W_TEMP
 	SWAPF	STATUS,W
 	MOVWF	STATUS_TEMP	;COPIA STATUS PARA STATUS_TEMP
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    ROTINA DE INTERRUP«√O                        *
+;*                    ROTINA DE INTERRUP√á√ÉO                        *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; AQUI SER√O ESCRITAS AS ROTINAS DE RECONHECIMENTO E TRATAMENTO DAS
-; INTERRUP«’ES
+; AQUI SER√ÉO ESCRITAS AS ROTINAS DE RECONHECIMENTO E TRATAMENTO DAS
+; INTERRUP√á√ïES
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                 ROTINA DE SAÕDA DA INTERRUP«√O                  *
+;*                 ROTINA DE SA√çDA DA INTERRUP√á√ÉO                  *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ; OS VALORES DE "W" E "STATUS" DEVEM SER RECUPERADOS ANTES DE 
-; RETORNAR DA INTERRUP«√O
+; RETORNAR DA INTERRUP√á√ÉO
 
 SAI_INT
 	SWAPF	STATUS_TEMP,W
@@ -96,28 +96,28 @@ SAI_INT
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*	            	 ROTINAS E SUBROTINAS                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; CADA ROTINA OU SUBROTINA DEVE POSSUIR A DESCRI«√O DE FUNCIONAMENTO
-; E UM NOME COERENTE ¿S SUAS FUN«’ES.
+; CADA ROTINA OU SUBROTINA DEVE POSSUIR A DESCRI√á√ÉO DE FUNCIONAMENTO
+; E UM NOME COERENTE √ÄS SUAS FUN√á√ïES.
 
-;DELAY DE 2 SEGUNDOS PARA OS SINAIS VERDE E VERMELHO, QUE SER¡ COMPLEMENTADO
+;DELAY DE 2 SEGUNDOS PARA OS SINAIS VERDE E VERMELHO, QUE SER√Å COMPLEMENTADO
 ;COM 0,5 SEGUNDO DO SINAL AMARELO, TOTALIZANDO 2,5 SEGUNDOS
 DELAY_2
 	MOVLW	.39		;CONTAGEM DE 217 MICROSSEGUNDOS
 	MOVWF	TMR0		;MOVE 39 PARA O 'TMR0'
 	BCF	INTCON, T0IF	;ZERA O 'T0IF', INDICANDO O 'RESET' DO 'TMR0'
-	CLRF	INCR		;ZERA O 'INCR', VARI¡VEL RESPONS¡VEL PELA QUANTIDADE DE LOOPS
-	GOTO	NOT_FULL_2	;VAI PARA 'NOT_FULL_2', INDICANDO QUE 'TMR0' N√O EST¡ CHEIO
+	CLRF	INCR		;ZERA O 'INCR', VARI√ÅVEL RESPONS√ÅVEL PELA QUANTIDADE DE LOOPS
+	GOTO	NOT_FULL_2	;VAI PARA 'NOT_FULL_2', INDICANDO QUE 'TMR0' N√ÉO EST√Å CHEIO
 FULL_2				;LABEL QUE REPRESENTA O ESTOURO DE 'TMRO'
-	MOVLW	.39		;REINÕCIO DA CONTAGEM
+	MOVLW	.39		;REIN√çCIO DA CONTAGEM
 	MOVWF	TMR0		;MOVE 39 PARA O 'TMR0'
 	BCF	INTCON, T0IF	;ZERA O 'T0IF', INDICANDO O 'RESET' DO 'TMR0'
-NOT_FULL_2			;LABEL PARA QUANDO 'TMR0' AINDA N√O EST¡ CHEIO
-	BTFSS	INTCON, T0IF	;TESTE: SE 'T0IF' ESTIVER CHEIO (1), PULA PARA A INSTRU«√O 117
-	GOTO	NOT_FULL_2	;SE 'T0IF' N√O ESTIVER CHEIO (0), VOLTA PARA A LABEL 'NOT_FULL_2'
+NOT_FULL_2			;LABEL PARA QUANDO 'TMR0' AINDA N√ÉO EST√Å CHEIO
+	BTFSS	INTCON, T0IF	;TESTE: SE 'T0IF' ESTIVER CHEIO (1), PULA PARA A INSTRU√á√ÉO 117
+	GOTO	NOT_FULL_2	;SE 'T0IF' N√ÉO ESTIVER CHEIO (0), VOLTA PARA A LABEL 'NOT_FULL_2'
 	INCF	INCR		;SE 'T0IF' ESTIVER CHEIO (1), 'INCR' RECEBE MAIS 1
-	MOVLW	.36		;MOVE 36 PARA O REGISTRADOR 'WREG', INDICANDO O M¡XIMO DE LOOPS ESPERADO
+	MOVLW	.36		;MOVE 36 PARA O REGISTRADOR 'WREG', INDICANDO O M√ÅXIMO DE LOOPS ESPERADO
 	SUBWF	INCR, W		;SUBTRAI 36 DE 'INCR'
-	BTFSC	STATUS, C	;SALTA SE O 'INCR' N√O FOR IGUAL A 36
+	BTFSC	STATUS, C	;SALTA SE O 'INCR' N√ÉO FOR IGUAL A 36
 	RETURN			;SE 'INCR' FOR IGUAL 36, RETORNA PARA A 'MAIN'
 	GOTO	FULL_2		;SE 'INCR' FOR MENOR QUE 36, VOLTA PARA 'FULL_2'
 	
@@ -126,19 +126,19 @@ DELAY_0_5
 	MOVLW	.39		;CONTAGEM DE 217 MICROSSEGUNDOS
 	MOVWF	TMR0		;MOVE 39 PARA O 'TMR0'
 	BCF	INTCON, T0IF	;ZERA O 'T0IF', INDICANDO O 'RESET' DO 'TMR0'
-	CLRF	INCR		;ZERA O 'INCR', VARI¡VEL RESPONS¡VEL PELA QUANTIDADE DE LOOPS
-	GOTO	NOT_FULL_0_5	;VAI PARA 'NOT_FULL_0_5', INDICANDO QUE 'TMR0' N√O EST¡ CHEIO
+	CLRF	INCR		;ZERA O 'INCR', VARI√ÅVEL RESPONS√ÅVEL PELA QUANTIDADE DE LOOPS
+	GOTO	NOT_FULL_0_5	;VAI PARA 'NOT_FULL_0_5', INDICANDO QUE 'TMR0' N√ÉO EST√Å CHEIO
 FULL_0_5			;LABEL QUE REPRESENTA O ESTOURO DE 'TMRO'
-	MOVLW	.39		;REINÕCIO DA CONTAGEM
+	MOVLW	.39		;REIN√çCIO DA CONTAGEM
 	MOVWF	TMR0		;MOVE 39 PARA O 'TMR0'
 	BCF	INTCON, T0IF	;ZERA O 'T0IF', INDICANDO O 'RESET' DO 'TMR0'
-NOT_FULL_0_5			;LABEL PARA QUANDO 'TMR0' AINDA N√O EST¡ CHEIO
-	BTFSS	INTCON, T0IF	;TESTE: SE 'T0IF' ESTIVER CHEIO (1), PULA PARA A INSTRU«√O 138
-	GOTO	NOT_FULL_0_5	;SE 'T0IF' N√O ESTIVER CHEIO (0), VOLTA PARA A LABEL 'NOT_FULL_0_5'
+NOT_FULL_0_5			;LABEL PARA QUANDO 'TMR0' AINDA N√ÉO EST√Å CHEIO
+	BTFSS	INTCON, T0IF	;TESTE: SE 'T0IF' ESTIVER CHEIO (1), PULA PARA A INSTRU√á√ÉO 138
+	GOTO	NOT_FULL_0_5	;SE 'T0IF' N√ÉO ESTIVER CHEIO (0), VOLTA PARA A LABEL 'NOT_FULL_0_5'
 	INCF	INCR		;SE 'T0IF' ESTIVER CHEIO (1), 'INCR' RECEBE MAIS 1
-	MOVLW	.9		;MOVE 9 PARA O REGISTRADOR 'WREG', INDICANDO O M¡XIMO DE LOOPS ESPERADO
+	MOVLW	.9		;MOVE 9 PARA O REGISTRADOR 'WREG', INDICANDO O M√ÅXIMO DE LOOPS ESPERADO
 	SUBWF	INCR, W		;SUBTRAI 9 DE 'INCR'
-	BTFSC	STATUS, C	;SALTA SE O 'INCR' N√O FOR IGUAL A 9
+	BTFSC	STATUS, C	;SALTA SE O 'INCR' N√ÉO FOR IGUAL A 9
 	RETURN			;SE 'INCR' FOR IGUAL 9, RETORNA PARA A 'MAIN'
 	GOTO	FULL_0_5	;SE 'INCR' FOR MENOR QUE 9, VOLTA PARA 'FULL_0_5'
 
@@ -149,28 +149,28 @@ NOT_FULL_0_5			;LABEL PARA QUANDO 'TMR0' AINDA N√O EST¡ CHEIO
 INICIO
 	BANK1			;ALTERA PARA O BANCO 1
 	MOVLW	B'00000000'	;CONFIGURA TODAS AS PORTAS DO GPIO (PINOS)
-	MOVWF	TRISIO		;COMO SAÕDAS
+	MOVWF	TRISIO		;COMO SA√çDAS
 	CLRF	ANSEL 		;DEFINE PORTAS COMO Digital I/O
 	MOVLW	B'00000111'
-	MOVWF	OPTION_REG	;DEFINE OP«’ES DE OPERA«√O
+	MOVWF	OPTION_REG	;DEFINE OP√á√ïES DE OPERA√á√ÉO
 	MOVLW	B'00000000'
-	MOVWF	INTCON		;DEFINE OP«’ES DE INTERRUP«’ES
+	MOVWF	INTCON		;DEFINE OP√á√ïES DE INTERRUP√á√ïES
 	BANK0			;RETORNA PARA O BANCO
 	MOVLW	B'00000111'	;'TMR0' 1:256
-	MOVWF	CMCON		;DEFINE O MODO DE OPERA«√O DO COMPARADOR ANAL”GICO
+	MOVWF	CMCON		;DEFINE O MODO DE OPERA√á√ÉO DO COMPARADOR ANAL√ìGICO
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                     INICIALIZA«√O DAS VARI¡VEIS                 *
+;*                     INICIALIZA√á√ÉO DAS VARI√ÅVEIS                 *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                     ROTINA PRINCIPAL                            *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 	
-	;SEM¡FORO 1: GP0 - VERDE E VERMELHO
+	;SEM√ÅFORO 1: GP0 - VERDE E VERMELHO
 	;	     GP1 - AMARELO
 	;
-	;SEM¡FORO 2: GP2 - VERDE E VERMELHO
+	;SEM√ÅFORO 2: GP2 - VERDE E VERMELHO
 	;	     GP4 - AMARELO
 	;
 	;PARA OS CASOS ENVOLVENDO VERDE E VERMELHO, FOI ADOTADO:
