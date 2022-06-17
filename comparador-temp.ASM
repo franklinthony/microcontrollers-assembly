@@ -1,94 +1,94 @@
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*              MODIFICAÇÕES PARA USO COM 12F675                   *
+;*              MODIFICAÃ‡Ã•ES PARA USO COM 12F675                   *
 ;*                FEITAS PELO PROF. MARDSON                        *
-;*                      MARÇO DE 2021                              *
+;*                      MARÃ‡O DE 2021                              *
 ;*                 BASEADO NO EXEMPLO DO LIVRO                     *
-;*           Desbravando o PIC. David José de Souza                *
+;*           Desbravando o PIC. David JosÃ© de Souza                *
 ;*-----------------------------------------------------------------*
 ;*   MODELO PARA O PIC 12F675                                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                     ARQUIVOS DE DEFINIÇÕES                      *
+;*                     ARQUIVOS DE DEFINIÃ‡Ã•ES                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-#INCLUDE <p12f675.inc>	;ARQUIVO PADRÃO MICROCHIP PARA 12F675
+#INCLUDE <p12f675.inc>	;ARQUIVO PADRÃƒO MICROCHIP PARA 12F675
 
 	__CONFIG _BODEN_OFF & _CP_OFF & _PWRTE_ON & _WDT_OFF & _MCLRE_ON & _INTRC_OSC_NOCLKOUT
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    PAGINAÇÃO DE MEMÓRIA                         *
+;*                    PAGINAÃ‡ÃƒO DE MEMÃ“RIA                         *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;DEFINIÇÃO DE COMANDOS DE USUÁRIO PARA ALTERAÇÃO DA PÁGINA DE MEMÓRIA
-#DEFINE	BANK0	BCF STATUS,RP0	;SETA BANK 0 DE MEMÓRIA
-#DEFINE	BANK1	BSF STATUS,RP0	;SETA BANK 1 DE MAMÓRIA
+;DEFINIÃ‡ÃƒO DE COMANDOS DE USUÃRIO PARA ALTERAÃ‡ÃƒO DA PÃGINA DE MEMÃ“RIA
+#DEFINE	BANK0	BCF STATUS,RP0	;SETA BANK 0 DE MEMÃ“RIA
+#DEFINE	BANK1	BSF STATUS,RP0	;SETA BANK 1 DE MAMÃ“RIA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                         VARIÁVEIS                               *
+;*                         VARIÃVEIS                               *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINIÇÃO DOS NOMES E ENDEREÇOS DE TODAS AS VARIÁVEIS UTILIZADAS 
+; DEFINIÃ‡ÃƒO DOS NOMES E ENDEREÃ‡OS DE TODAS AS VARIÃVEIS UTILIZADAS 
 ; PELO SISTEMA
 
-	CBLOCK	0x20	;ENDEREÇO INICIAL DA MEMÓRIA DE
-					;USUÁRIO
-		W_TEMP		;REGISTRADORES TEMPORÁRIOS PARA USO
-		STATUS_TEMP	;JUNTO ÀS INTERRUPÇÕES
+	CBLOCK	0x20	;ENDEREÃ‡O INICIAL DA MEMÃ“RIA DE
+					;USUÃRIO
+		W_TEMP		;REGISTRADORES TEMPORÃRIOS PARA USO
+		STATUS_TEMP	;JUNTO Ã€S INTERRUPÃ‡Ã•ES
 
-		;COLOQUE AQUI SUAS NOVAS VARIÁVEIS
-		;NÃO ESQUEÇA COMENTÁRIOS ESCLARECEDORES
+		;COLOQUE AQUI SUAS NOVAS VARIÃVEIS
+		;NÃƒO ESQUEÃ‡A COMENTÃRIOS ESCLARECEDORES
 
-	ENDC			;FIM DO BLOCO DE DEFINIÇÃO DE VARIÁVEIS
+	ENDC			;FIM DO BLOCO DE DEFINIÃ‡ÃƒO DE VARIÃVEIS
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                        FLAGS INTERNOS                           *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINIÇÃO DE TODOS OS FLAGS UTILIZADOS PELO SISTEMA
+; DEFINIÃ‡ÃƒO DE TODOS OS FLAGS UTILIZADOS PELO SISTEMA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                         CONSTANTES                              *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINIÇÃO DE TODAS AS CONSTANTES UTILIZADAS PELO SISTEMA
+; DEFINIÃ‡ÃƒO DE TODAS AS CONSTANTES UTILIZADAS PELO SISTEMA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                           ENTRADAS                              *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINIÇÃO DE TODOS OS PINOS QUE SERÃO UTILIZADOS COMO ENTRADA
-; RECOMENDAMOS TAMBÉM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+; DEFINIÃ‡ÃƒO DE TODOS OS PINOS QUE SERÃƒO UTILIZADOS COMO ENTRADA
+; RECOMENDAMOS TAMBÃ‰M COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                           SAÍDAS                                *
+;*                           SAÃDAS                                *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINIÇÃO DE TODOS OS PINOS QUE SERÃO UTILIZADOS COMO SAÍDA
-; RECOMENDAMOS TAMBÉM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+; DEFINIÃ‡ÃƒO DE TODOS OS PINOS QUE SERÃƒO UTILIZADOS COMO SAÃDA
+; RECOMENDAMOS TAMBÃ‰M COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                       VETOR DE RESET                            *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-	ORG	0x00			;ENDEREÇO INICIAL DE PROCESSAMENTO
+	ORG	0x00			;ENDEREÃ‡O INICIAL DE PROCESSAMENTO
 	GOTO	INICIO
 	
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    INÍCIO DA INTERRUPÇÃO                        *
+;*                    INÃCIO DA INTERRUPÃ‡ÃƒO                        *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; ENDEREÇO DE DESVIO DAS INTERRUPÇÕES. A PRIMEIRA TAREFA É SALVAR OS
-; VALORES DE "W" E "STATUS" PARA RECUPERAÇÃO FUTURA
+; ENDEREÃ‡O DE DESVIO DAS INTERRUPÃ‡Ã•ES. A PRIMEIRA TAREFA Ã‰ SALVAR OS
+; VALORES DE "W" E "STATUS" PARA RECUPERAÃ‡ÃƒO FUTURA
 
-	ORG	0x04			;ENDEREÇO INICIAL DA INTERRUPÇÃO
+	ORG	0x04			;ENDEREÃ‡O INICIAL DA INTERRUPÃ‡ÃƒO
 	MOVWF	W_TEMP		;COPIA W PARA W_TEMP
 	SWAPF	STATUS,W
 	MOVWF	STATUS_TEMP	;COPIA STATUS PARA STATUS_TEMP
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    ROTINA DE INTERRUPÇÃO                        *
+;*                    ROTINA DE INTERRUPÃ‡ÃƒO                        *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; AQUI SERÃO ESCRITAS AS ROTINAS DE RECONHECIMENTO E TRATAMENTO DAS
-; INTERRUPÇÕES
+; AQUI SERÃƒO ESCRITAS AS ROTINAS DE RECONHECIMENTO E TRATAMENTO DAS
+; INTERRUPÃ‡Ã•ES
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                 ROTINA DE SAÍDA DA INTERRUPÇÃO                  *
+;*                 ROTINA DE SAÃDA DA INTERRUPÃ‡ÃƒO                  *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ; OS VALORES DE "W" E "STATUS" DEVEM SER RECUPERADOS ANTES DE 
-; RETORNAR DA INTERRUPÇÃO
+; RETORNAR DA INTERRUPÃ‡ÃƒO
 
 SAI_INT
 	SWAPF	STATUS_TEMP,W
@@ -100,8 +100,8 @@ SAI_INT
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*	            	 ROTINAS E SUBROTINAS                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; CADA ROTINA OU SUBROTINA DEVE POSSUIR A DESCRIÇÃO DE FUNCIONAMENTO
-; E UM NOME COERENTE ÀS SUAS FUNÇÕES.
+; CADA ROTINA OU SUBROTINA DEVE POSSUIR A DESCRIÃ‡ÃƒO DE FUNCIONAMENTO
+; E UM NOME COERENTE Ã€S SUAS FUNÃ‡Ã•ES.
 
 SUBROTINA1
 
@@ -117,54 +117,54 @@ INICIO
 	BANK1				;ALTERA PARA O BANCO 1
 	;GP1 SETADO COMO ENTRADA
 	MOVLW	B'00000010' ;CONFIGURA TODAS AS PORTAS DO GPIO (PINOS)
-	MOVWF	TRISIO		;COMO SAÍDAS
+	MOVWF	TRISIO		;COMO SAÃDAS
 	;GP1 COMO ENTRADA DIGITAL
 	MOVLW	B'00000010'
 	MOVWF	ANSEL 		;DEFINE PORTAS COMO Digital I/O
 	MOVLW	B'00000100'
-	MOVWF	OPTION_REG	;DEFINE OPÇÕES DE OPERAÇÃO
+	MOVWF	OPTION_REG	;DEFINE OPÃ‡Ã•ES DE OPERAÃ‡ÃƒO
 	MOVLW	B'00000000'
-	MOVWF	INTCON		;DEFINE OPÇÕES DE INTERRUPÇÕES
-	;'VRCON' COM AS SEGUINTES CONFIGURAÇÕES:
+	MOVWF	INTCON		;DEFINE OPÃ‡Ã•ES DE INTERRUPÃ‡Ã•ES
+	;'VRCON' COM AS SEGUINTES CONFIGURAÃ‡Ã•ES:
 	;   BITS 0 A 3 - N = 5
 	;   BIT 5 - ESCOLHA DA ESCALA 'HIGH'
-	;   BIT 7 - HABILITANDO A TENSÃO DE REFERÊNCIA
+	;   BIT 7 - HABILITANDO A TENSÃƒO DE REFERÃŠNCIA
 	MOVLW	B'10000101'
 	MOVWF	VRCON
 	BANK0				;RETORNA PARA O BANCO
-	;'CMCON' COM AS SEGUINTES CONFIGURAÇÕES:
+	;'CMCON' COM AS SEGUINTES CONFIGURAÃ‡Ã•ES:
 	;   BITS 0 A 2 - ESCOLHA DO MODELO DE COMPARADOR 
-	;   BIT 4 - ESCOLHA DA SAÍDA NÃO INVERTIDA
+	;   BIT 4 - ESCOLHA DA SAÃDA NÃƒO INVERTIDA
 	MOVLW	B'00000011'
-	MOVWF	CMCON		;DEFINE O MODO DE OPERAÇÃO DO COMPARADOR ANALÓGICO
+	MOVWF	CMCON		;DEFINE O MODO DE OPERAÃ‡ÃƒO DO COMPARADOR ANALÃ“GICO
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                     INICIALIZAÇÃO DAS VARIÁVEIS                 *
+;*                     INICIALIZAÃ‡ÃƒO DAS VARIÃVEIS                 *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                     ROTINA PRINCIPAL                            *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 MAIN
-	;EXPLICAÇÃO SOBRE O MODO DE APLICAÇÃO FINAL DA ATIVIDADE:
+	;EXPLICAÃ‡ÃƒO SOBRE O MODO DE APLICAÃ‡ÃƒO FINAL DA ATIVIDADE:
 	;
-	;EM UM PRIMEIRO CENÁRIO, AO CONSULTAR O DATASHEET DO SENSOR LM35,
-	;FOI CONSTATADO QUE O MESMO RETORNA UMA TENSÃO DE 10 mV POR ºC. COMO
-	;A ESPECIFICAÇÃO TROUXE 40ºC COMO LIMITE ESTÁVEL DE TEMPERATURA DE UM
-	;RESISTOR, A TENSÃO DE REFERÊNCIA SERIA (10 mV * 40ºC) = 400 mV. EM SE
+	;EM UM PRIMEIRO CENÃRIO, AO CONSULTAR O DATASHEET DO SENSOR LM35,
+	;FOI CONSTATADO QUE O MESMO RETORNA UMA TENSÃƒO DE 10 mV POR ÂºC. COMO
+	;A ESPECIFICAÃ‡ÃƒO TROUXE 40ÂºC COMO LIMITE ESTÃVEL DE TEMPERATURA DE UM
+	;RESISTOR, A TENSÃƒO DE REFERÃŠNCIA SERIA (10 mV * 40ÂºC) = 400 mV. EM SE
 	;TRATANDO DA ESCOLHA DA ESCALA E DO VALOR DE 'N', FOI ESCOLHIDA A ESCALA
-	;'LOW', COM N = 2, O QUE RETORNAVA UMA TENSÃO DE REFERÊNCIA DE 416 mV,
-	;O QUE REPRESENTAVA 41,6ºC, FICANDO MUITO DISTANTE DA TEMPERATURA ESPE-
-	;RADA - 40ºC. 
+	;'LOW', COM N = 2, O QUE RETORNAVA UMA TENSÃƒO DE REFERÃŠNCIA DE 416 mV,
+	;O QUE REPRESENTAVA 41,6ÂºC, FICANDO MUITO DISTANTE DA TEMPERATURA ESPE-
+	;RADA - 40ÂºC. 
 	;
-	;SOLUÇÃO ADOTADA: ACOPLAMENTO DE UM AMPLIFICADOR COM GANHO 5 AO	SENSOR
+	;SOLUÃ‡ÃƒO ADOTADA: ACOPLAMENTO DE UM AMPLIFICADOR COM GANHO 5 AO	SENSOR
 	;LM35. 
 	;
 	;NESTE CASO,
 	;
 	;       SENSOR ORIGINAL     |	SENSOR AMPLIFICADO COM GANHO 5
-	;	  10 mV POR ºC      |	        50 mV POR ºC
-	;	  400 mV A 40ºC     |	        2 V A 40ºC
+	;	  10 mV POR ÂºC      |	        50 mV POR ÂºC
+	;	  400 mV A 40ÂºC     |	        2 V A 40ÂºC
 	;	  Vref = 400 mV     |           Vref = 2 V
 	;
 	;ASSIM, DETERMINANDO A ESCALA E O VALOR DE 'N', E CONSIDERANDO Vdd = 5,
@@ -177,7 +177,7 @@ MAIN
 	;Vref(LOW) = (10/24) * 5 -> Vref(LOW) = 2,08 V    
 	;Vref(HIGH) = (5/4) + (5/32) * 5 -> Vref(HIGH) = // 2,03 V //
 	;			
-	;LOGO, O VALOR QUE MAIS SE APROXIMA DE 2 V É O DA ESCALA 'HIGH', COM
+	;LOGO, O VALOR QUE MAIS SE APROXIMA DE 2 V Ã‰ O DA ESCALA 'HIGH', COM
 	;N = 5. NESTE CASO, OBTEMOS UM VALOR MUITO MAIS PRECISO DO QUE O PROBLEMA
 	;ORIGINAL.
 	
