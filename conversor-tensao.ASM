@@ -1,92 +1,92 @@
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*              MODIFICA«’ES PARA USO COM 12F675                   *
+;*              MODIFICA√á√ïES PARA USO COM 12F675                   *
 ;*                FEITAS PELO PROF. MARDSON                        *
-;*                      MAR«O DE 2021                              *
+;*                      MAR√áO DE 2021                              *
 ;*                 BASEADO NO EXEMPLO DO LIVRO                     *
-;*           Desbravando o PIC. David JosÈ de Souza                *
+;*           Desbravando o PIC. David Jos√© de Souza                *
 ;*-----------------------------------------------------------------*
 ;*   MODELO PARA O PIC 12F675                                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                     ARQUIVOS DE DEFINI«’ES                      *
+;*                     ARQUIVOS DE DEFINI√á√ïES                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-#INCLUDE <p12f675.inc>	;ARQUIVO PADR√O MICROCHIP PARA 12F675
+#INCLUDE <p12f675.inc>	;ARQUIVO PADR√ÉO MICROCHIP PARA 12F675
 
 	__CONFIG _BODEN_OFF & _CP_OFF & _PWRTE_ON & _WDT_OFF & _MCLRE_ON & _INTRC_OSC_NOCLKOUT
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    PAGINA«√O DE MEM”RIA                         *
+;*                    PAGINA√á√ÉO DE MEM√ìRIA                         *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;DEFINI«√O DE COMANDOS DE USU¡RIO PARA ALTERA«√O DA P¡GINA DE MEM”RIA
-#DEFINE	BANK0	BCF STATUS,RP0	;SETA BANK 0 DE MEM”RIA
-#DEFINE	BANK1	BSF STATUS,RP0	;SETA BANK 1 DE MAM”RIA
+;DEFINI√á√ÉO DE COMANDOS DE USU√ÅRIO PARA ALTERA√á√ÉO DA P√ÅGINA DE MEM√ìRIA
+#DEFINE	BANK0	BCF STATUS,RP0	;SETA BANK 0 DE MEM√ìRIA
+#DEFINE	BANK1	BSF STATUS,RP0	;SETA BANK 1 DE MAM√ìRIA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                         VARI¡VEIS                               *
+;*                         VARI√ÅVEIS                               *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DOS NOMES E ENDERE«OS DE TODAS AS VARI¡VEIS UTILIZADAS 
+; DEFINI√á√ÉO DOS NOMES E ENDERE√áOS DE TODAS AS VARI√ÅVEIS UTILIZADAS 
 ; PELO SISTEMA
 
-	CBLOCK	0x20	;ENDERE«O INICIAL DA MEM”RIA DE
-					;USU¡RIO
-		W_TEMP		;REGISTRADORES TEMPOR¡RIOS PARA USO
-		STATUS_TEMP	;JUNTO ¿S INTERRUP«’ES
-		AUX		;VARI¡VEL DE AUXÕLIO
+	CBLOCK	0x20	;ENDERE√áO INICIAL DA MEM√ìRIA DE
+					;USU√ÅRIO
+		W_TEMP		;REGISTRADORES TEMPOR√ÅRIOS PARA USO
+		STATUS_TEMP	;JUNTO √ÄS INTERRUP√á√ïES
+		AUX		;VARI√ÅVEL DE AUX√çLIO
 
-		;COLOQUE AQUI SUAS NOVAS VARI¡VEIS
-		;N√O ESQUE«A COMENT¡RIOS ESCLARECEDORES
+		;COLOQUE AQUI SUAS NOVAS VARI√ÅVEIS
+		;N√ÉO ESQUE√áA COMENT√ÅRIOS ESCLARECEDORES
 
-	ENDC			;FIM DO BLOCO DE DEFINI«√O DE VARI¡VEIS
+	ENDC			;FIM DO BLOCO DE DEFINI√á√ÉO DE VARI√ÅVEIS
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                        FLAGS INTERNOS                           *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODOS OS FLAGS UTILIZADOS PELO SISTEMA
+; DEFINI√á√ÉO DE TODOS OS FLAGS UTILIZADOS PELO SISTEMA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                         CONSTANTES                              *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODAS AS CONSTANTES UTILIZADAS PELO SISTEMA
+; DEFINI√á√ÉO DE TODAS AS CONSTANTES UTILIZADAS PELO SISTEMA
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                           ENTRADAS                              *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODOS OS PINOS QUE SER√O UTILIZADOS COMO ENTRADA
-; RECOMENDAMOS TAMB…M COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+; DEFINI√á√ÉO DE TODOS OS PINOS QUE SER√ÉO UTILIZADOS COMO ENTRADA
+; RECOMENDAMOS TAMB√âM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                           SAÕDAS                                *
+;*                           SA√çDAS                                *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; DEFINI«√O DE TODOS OS PINOS QUE SER√O UTILIZADOS COMO SAÕDA
-; RECOMENDAMOS TAMB…M COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
+; DEFINI√á√ÉO DE TODOS OS PINOS QUE SER√ÉO UTILIZADOS COMO SA√çDA
+; RECOMENDAMOS TAMB√âM COMENTAR O SIGNIFICADO DE SEUS ESTADOS (0 E 1)
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                       VETOR DE RESET                            *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
-	ORG	0x00			;ENDERE«O INICIAL DE PROCESSAMENTO
+	ORG	0x00			;ENDERE√áO INICIAL DE PROCESSAMENTO
 	GOTO	INICIO
 	
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    INÕCIO DA INTERRUP«√O                        *
+;*                    IN√çCIO DA INTERRUP√á√ÉO                        *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; ENDERE«O DE DESVIO DAS INTERRUP«’ES. A PRIMEIRA TAREFA … SALVAR OS
-; VALORES DE "W" E "STATUS" PARA RECUPERA«√O FUTURA
+; ENDERE√áO DE DESVIO DAS INTERRUP√á√ïES. A PRIMEIRA TAREFA √â SALVAR OS
+; VALORES DE "W" E "STATUS" PARA RECUPERA√á√ÉO FUTURA
 
-	ORG	0x04			;ENDERE«O INICIAL DA INTERRUP«√O
+	ORG	0x04			;ENDERE√áO INICIAL DA INTERRUP√á√ÉO
 	MOVWF	W_TEMP		;COPIA W PARA W_TEMP
 	SWAPF	STATUS,W
 	MOVWF	STATUS_TEMP	;COPIA STATUS PARA STATUS_TEMP
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                    ROTINA DE INTERRUP«√O                        *
+;*                    ROTINA DE INTERRUP√á√ÉO                        *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; AQUI SER√O ESCRITAS AS ROTINAS DE RECONHECIMENTO E TRATAMENTO DAS
-; INTERRUP«’ES
+; AQUI SER√ÉO ESCRITAS AS ROTINAS DE RECONHECIMENTO E TRATAMENTO DAS
+; INTERRUP√á√ïES
 	
-	;QUAL TIPO DE INTERRUP«√O FOI ATIVADA?
-	BTFSS	PIR1, ADIF	;FIM DA CONVERS√O A/D
+	;QUAL TIPO DE INTERRUP√á√ÉO FOI ATIVADA?
+	BTFSS	PIR1, ADIF	;FIM DA CONVERS√ÉO A/D
 	GOTO	FIM_TMR		;ESTOURO DE 'TMR1'
 	MOVFW	ADRESH	    
 	MOVWF	AUX		;'AUX' RECEBE O VALOR CONVERTIDO
@@ -94,7 +94,7 @@ INT_0
 	MOVLW	.26		
 	SUBWF	AUX, W	
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 26
-	GOTO	INT_1		;SE N√O, VERIFICA SE … 1
+	GOTO	INT_1		;SE N√ÉO, VERIFICA SE √â 1
 	MOVLW	.0		;SE SIM, CLASSIFICA COMO 0
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -102,7 +102,7 @@ INT_1
 	MOVLW	.52
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 52
-	GOTO	INT_2		;SE N√O, VERIFICA SE … 2
+	GOTO	INT_2		;SE N√ÉO, VERIFICA SE √â 2
 	MOVLW	.1		;SE SIM, CLASSIFICA COMO 1	
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -110,7 +110,7 @@ INT_2
 	MOVLW	.77
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 77
-	GOTO	INT_3		;SE N√O, VERIFICA SE … 3
+	GOTO	INT_3		;SE N√ÉO, VERIFICA SE √â 3
 	MOVLW	.2		;SE SIM, CLASSIFICA COMO 2	
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -118,7 +118,7 @@ INT_3
 	MOVLW	.103
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 103
-	GOTO	INT_4		;SE N√O, VERIFICA SE … 4
+	GOTO	INT_4		;SE N√ÉO, VERIFICA SE √â 4
 	MOVLW	.3		;SE SIM, CLASSIFICA COMO 3
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -126,7 +126,7 @@ INT_4
 	MOVLW	.129
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 129
-	GOTO	INT_5		;SE N√O, VERIFICA SE … 5
+	GOTO	INT_5		;SE N√ÉO, VERIFICA SE √â 5
 	MOVLW	.4		;SE SIM, CLASSIFICA COMO 4	
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -134,7 +134,7 @@ INT_5
 	MOVLW	.154
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 154
-	GOTO	INT_6		;SE N√O, VERIFICA SE … 6
+	GOTO	INT_6		;SE N√ÉO, VERIFICA SE √â 6
 	MOVLW	.5		;SE SIM, CLASSIFICA COMO 5
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -142,7 +142,7 @@ INT_6
 	MOVLW	.180
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 180
-	GOTO	INT_7		;SE N√O, VERIFICA SE … 7
+	GOTO	INT_7		;SE N√ÉO, VERIFICA SE √â 7
 	MOVLW	.6		;SE SIM, CLASSIFICA COMO 6
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -150,7 +150,7 @@ INT_7
 	MOVLW	.205
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 205
-	GOTO	INT_8		;SE N√O, VERIFICA SE … 8
+	GOTO	INT_8		;SE N√ÉO, VERIFICA SE √â 8
 	MOVLW	.7		;SE SIM, CLASSIFICA COMO 7
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
@@ -158,64 +158,64 @@ INT_8
 	MOVLW	.231
 	SUBWF	AUX, W		
 	BTFSC	STATUS, C	;SALTA SE 'AUX' FOR MENOR QUE 231
-	GOTO	INT_9		;SE N√O, S” PODE SER 9
+	GOTO	INT_9		;SE N√ÉO, S√ì PODE SER 9
 	MOVLW	.8		;SE SIM, CLASSIFICA COMO 8
 	MOVWF	AUX
 	GOTO	AJUSTE_BCD_GPIO
 INT_9
 	MOVLW	.9		;CLASSIFICA COMO 9	
 	MOVWF	AUX
-AJUSTE_BCD_GPIO			;NO CASO DE 0 A 9, O BIN¡RIO E O BCD T M A MESMA REPRESENTA«√O
-	BTFSC	AUX, 0		;VERIFICA SE O BIT 0 DE 'AUX' … 0
-	GOTO	HIGH_0		;SE N√O, COLOCA O BIT 0 DE 'GPIO' EM 1
+AJUSTE_BCD_GPIO			;NO CASO DE 0 A 9, O BIN√ÅRIO E O BCD T√äM A MESMA REPRESENTA√á√ÉO
+	BTFSC	AUX, 0		;VERIFICA SE O BIT 0 DE 'AUX' √â 0
+	GOTO	HIGH_0		;SE N√ÉO, COLOCA O BIT 0 DE 'GPIO' EM 1
 	BCF	GPIO, 0		;SE SIM, COLOCA O BIT 0 DE 'GPIO' EM 0
 	GOTO	BIT_1
 HIGH_0
 	BSF	GPIO, 0
 BIT_1
-	BTFSC	AUX, 1		;VERIFICA SE O BIT 1 DE 'AUX' … 0
-	GOTO	HIGH_1		;SE N√O, COLOCA O BIT 1 DE 'GPIO' EM 1
+	BTFSC	AUX, 1		;VERIFICA SE O BIT 1 DE 'AUX' √â 0
+	GOTO	HIGH_1		;SE N√ÉO, COLOCA O BIT 1 DE 'GPIO' EM 1
 	BCF	GPIO, 1		;SE SIM, COLOCA  BIT 1 DE 'GPIO' EM 0
 	GOTO	BIT_2
 HIGH_1
 	BSF	GPIO, 1
 BIT_2	
-	BTFSC	AUX, 2		;VERIFICA SE O BIT 2 DE 'AUX' … 0
-	GOTO	HIGH_4		;SE N√O, COLOCA O BIT 4 DE 'GPIO' EM 1
+	BTFSC	AUX, 2		;VERIFICA SE O BIT 2 DE 'AUX' √â 0
+	GOTO	HIGH_4		;SE N√ÉO, COLOCA O BIT 4 DE 'GPIO' EM 1
 	BCF	GPIO, 4		;SE SIM, COLOCA  BIT 4 DE 'GPIO' EM 0
 	GOTO	BIT_3
 HIGH_4
 	BSF	GPIO, 4
 BIT_3	
-	BTFSC	AUX, 3		;VERIFICA SE O BIT 3 DE 'AUX' … 0
-	GOTO	HIGH_5		;SE N√O, COLOCA O BIT 5 DE 'GPIO' EM 1
+	BTFSC	AUX, 3		;VERIFICA SE O BIT 3 DE 'AUX' √â 0
+	GOTO	HIGH_5		;SE N√ÉO, COLOCA O BIT 5 DE 'GPIO' EM 1
 	BCF	GPIO, 5		;SE SIM, COLOCA  BIT 5 DE 'GPIO' EM 0
-	BCF	PIR1, ADIF	;LIMPA A FLAG DE T…RMINO DA CONVERS√O A/D
+	BCF	PIR1, ADIF	;LIMPA A FLAG DE T√âRMINO DA CONVERS√ÉO A/D
 	GOTO	SAI_INT
 HIGH_5
 	BSF	GPIO, 5
-	BCF	PIR1, ADIF	;LIMPA A FLAG DE T…RMINO DA CONVERS√O A/D
+	BCF	PIR1, ADIF	;LIMPA A FLAG DE T√âRMINO DA CONVERS√ÉO A/D
 	GOTO	SAI_INT
 FIM_TMR
 	MOVFW	TMR1H		;MOVE A CONTAGEM DE 'TMR1H' PARA 'W'
-	MOVWF	AUX		;MOVE O CONTE⁄DO DE 'W' PARA 'AUX'
+	MOVWF	AUX		;MOVE O CONTE√öDO DE 'W' PARA 'AUX'
 	MOVLW	.135		;MOVE 135 PARA 'W'
 	SUBWF	AUX, W		;FAZ 'AUX' - 'W' E O RESULTADO VAI PARA 'W'
 	BTFSS	STATUS, C	;VERIFICA SE 'TMR1H' CHEGOU NA CONTAGEM DE '135' 
-	GOTO	FIM_TMR		;SE N√O, VOLTA PARA 'FIM_TMR'
+	GOTO	FIM_TMR		;SE N√ÉO, VOLTA PARA 'FIM_TMR'
 	BCF	PIR1, TMR1IF	;SE SIM, LIMPA A FLAG DE ESTOURO DE 'TMR1'
 	CLRF	TMR1L		;ZERA A PARTE 'LOW' DO 'TIMER1'
 	CLRF	TMR1H		;ZERA A PARTE 'HIGH' DO 'TIMER1'
-	;NOVA TENS√O DE ENTRADA POR ESTÕMULO
+	;NOVA TENS√ÉO DE ENTRADA POR EST√çMULO
 	NOP
 	NOP
-	BSF	ADCON0, 1	;INICIA UMA NOVA CONVERS√O
+	BSF	ADCON0, 1	;INICIA UMA NOVA CONVERS√ÉO
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                 ROTINA DE SAÕDA DA INTERRUP«√O                  *
+;*                 ROTINA DE SA√çDA DA INTERRUP√á√ÉO                  *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ; OS VALORES DE "W" E "STATUS" DEVEM SER RECUPERADOS ANTES DE 
-; RETORNAR DA INTERRUP«√O
+; RETORNAR DA INTERRUP√á√ÉO
 
 SAI_INT
 	SWAPF	STATUS_TEMP,W
@@ -227,8 +227,8 @@ SAI_INT
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*	            	 ROTINAS E SUBROTINAS                      *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-; CADA ROTINA OU SUBROTINA DEVE POSSUIR A DESCRI«√O DE FUNCIONAMENTO
-; E UM NOME COERENTE ¿S SUAS FUN«’ES.
+; CADA ROTINA OU SUBROTINA DEVE POSSUIR A DESCRI√á√ÉO DE FUNCIONAMENTO
+; E UM NOME COERENTE √ÄS SUAS FUN√á√ïES.
 
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
@@ -238,39 +238,39 @@ SAI_INT
 INICIO
 	BANK1				;ALTERA PARA O BANCO 1
 	MOVLW	B'00000100' ;CONFIGURA TODAS AS PORTAS DO GPIO (PINOS)
-	MOVWF	TRISIO		;COMO SAÕDAS
+	MOVWF	TRISIO		;COMO SA√çDAS
 	MOVLW	B'00010100'
 	MOVWF	ANSEL 		;DEFINE PORTAS COMO Digital I/O
 	MOVLW	B'00000100'
-	MOVWF	OPTION_REG	;DEFINE OP«’ES DE OPERA«√O
+	MOVWF	OPTION_REG	;DEFINE OP√á√ïES DE OPERA√á√ÉO
 	MOVLW	B'11000000'
-	MOVWF	INTCON		;DEFINE OP«’ES DE INTERRUP«’ES
+	MOVWF	INTCON		;DEFINE OP√á√ïES DE INTERRUP√á√ïES
 	MOVLW	B'01000001'
-	MOVWF	PIE1		;DEFINE AS INTERRUP«’ES POR PERIF…RICO
+	MOVWF	PIE1		;DEFINE AS INTERRUP√á√ïES POR PERIF√âRICO
 	BANK0				;RETORNA PARA O BANCO
 	MOVLW	B'00000111'
-	MOVWF	CMCON		;DEFINE O MODO DE OPERA«√O DO COMPARADOR ANAL”GICO
+	MOVWF	CMCON		;DEFINE O MODO DE OPERA√á√ÉO DO COMPARADOR ANAL√ìGICO
 	MOVLW	B'00001001'
 	MOVWF	ADCON0
-	MOVLW	B'00000101'	;PRESCALE 1:1, ATRAV…S DO CLOCK INTERNO
+	MOVLW	B'00000101'	;PRESCALE 1:1, ATRAV√âS DO CLOCK INTERNO
 	MOVWF	T1CON	
-	CLRF	PIR1		;FLAGS DAS POSSÕVEIS INTERRUP«’ES POR PERIF…RICO
+	CLRF	PIR1		;FLAGS DAS POSS√çVEIS INTERRUP√á√ïES POR PERIF√âRICO
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
-;*                     INICIALIZA«√O DAS VARI¡VEIS                 *
+;*                     INICIALIZA√á√ÉO DAS VARI√ÅVEIS                 *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 ;*                     ROTINA PRINCIPAL                            *
 ;* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 MAIN
-	;TENS√O DE ENTRADA POR ESTÕMULO
+	;TENS√ÉO DE ENTRADA POR EST√çMULO
 	CLRF	TMR1L		;ZERA A PARTE 'LOW' DO 'TIMER1'
 	CLRF	TMR1H		;ZERA A PARTE 'HIGH' DO 'TIMER1'
-	BSF	ADCON0, 1	;HABILITA A CONVERS√O A/D
+	BSF	ADCON0, 1	;HABILITA A CONVERS√ÉO A/D
 AGUARDA_INT
-	;AP”S O T…RMINO DO PRIMEIRO CICLO DE CONVERS√O, UMA NOVA
-	;TENS√O DE ENTRADA E A HABILITA«√O DE UMA NOVA CONVERS√O
-	;S√O FEITAS ATRAV…S DE ESTÕMULOS AO FINAL DA INTERRUP«√O POR 'TIMER1'
+	;AP√ìS O T√âRMINO DO PRIMEIRO CICLO DE CONVERS√ÉO, UMA NOVA
+	;TENS√ÉO DE ENTRADA E A HABILITA√á√ÉO DE UMA NOVA CONVERS√ÉO
+	;S√ÉO FEITAS ATRAV√âS DE EST√çMULOS AO FINAL DA INTERRUP√á√ÉO POR 'TIMER1'
 	GOTO	AGUARDA_INT
 	
 
