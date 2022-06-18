@@ -31,7 +31,7 @@
 
 Essas aplicações foram desenvolvidas com as seguintes tecnologias:
 
-- [Assembly](http://www.inf.furb.br/~maw/arquitetura/aula16.pdf)
+- Assembly
 - [PIC12F675](https://ww1.microchip.com/downloads/en/devicedoc/41190c.pdf)
 - [PIC12F617](https://ww1.microchip.com/downloads/aemDocuments/documents/OTH/ProductDocuments/DataSheets/41302D.pdf)
 
